@@ -7,7 +7,7 @@ const Imagenes = db.define('Imagenes',{
         type: DataTypes.STRING
     },
     url:{
-        type: DataTypes.STRING({length:700})
+        type: DataTypes.STRING({length:1000})
     }
 })
 
