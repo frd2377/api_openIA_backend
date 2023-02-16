@@ -23,16 +23,18 @@ app.get('/',cors(configCors),(req,res)=>{
 app.post('/',cors(configCors),async(req,res)=>{
     try {
         const data = JSON.parse(req.body)
-        console.log(data);
         const peticion = await openai.createImage({
             prompt:data.imagenPrompt,
             n:1,
             size:'512x512',
             response_format:'url'
         })
+
+        const url = new String(peticion.data.data[0].url)
+
         const dataDB = await Imagenes.create({
             nombre:data.imagenPrompt,
-            url:peticion.data.data[0].url
+            url: url
         })
         res.json(dataDB)
         
@@ -51,6 +53,23 @@ app.get('/imagenes',cors(configCors),async(req,res)=>{
 })
 
 app.listen(process.env.PORT)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
