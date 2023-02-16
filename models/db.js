@@ -11,7 +11,7 @@ const Imagenes = db.define('Imagenes',{
     }
 })
 
-db.sync({force:false})
+db.sync({force:true})
 
 module.exports = {
     Imagenes:Imagenes
